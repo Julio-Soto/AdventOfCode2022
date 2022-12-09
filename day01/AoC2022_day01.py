@@ -1,12 +1,23 @@
 # Advent of code puzzle Day 1
 
-calories = []
+groupCalories = []
+calorieSum = 0
+maxCalories = 0
 
-inputData = open('./day01/input_day01.txt','r')
-for line in inputData:
-    if line.strip():
-        calories.append(line)
+caloriesData = open('./day01/input_day01.txt','r')
+singleCalories = caloriesData.readlines()
+caloriesData.close()
 
-inputData.close()
+for singleCalorieAmount in singleCalories:
+    if singleCalorieAmount.strip():
+        calorieSum += int(singleCalorieAmount)
+    else:
+        groupCalories.append(calorieSum)
+        calorieSum = 0
 
-print(calories)
+
+for groupCalorieAmount in groupCalories:
+    maxCalories = max(maxCalories,groupCalorieAmount)
+
+print(groupCalories)
+print(maxCalories)
