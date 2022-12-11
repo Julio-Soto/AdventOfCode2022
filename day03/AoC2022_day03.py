@@ -10,5 +10,9 @@ rucksacksList = rucksacksData.read().splitlines()
 
 print('Number of Rucksacks: ', len(rucksacksList))
 
+leftSide, rightSide = rucksacksList[0][:len(rucksacksList[0])//2], rucksacksList[0][len(rucksacksList[0])//2:] 
+
+print(leftSide)
+print(rightSide)
 print(len(rucksacksList[0]))
-print(rucksacksList[:3])
+print(rucksacksList[0][2])
