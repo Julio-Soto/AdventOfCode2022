@@ -12,7 +12,13 @@ print('Number of Rucksacks: ', len(rucksacksList))
 
 leftSide, rightSide = rucksacksList[0][:len(rucksacksList[0])//2], rucksacksList[0][len(rucksacksList[0])//2:] 
 
-print(leftSide)
+for item in leftSide:
+    if rightSide.find(item) > 0:
+        print(rightSide[rightSide.find(item)])
+      
+
+""""
+print(leftSide[2])
 print(rightSide)
 print(len(rucksacksList[0]))
-print(rucksacksList[0][2])
+"""
