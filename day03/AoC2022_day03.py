@@ -11,7 +11,7 @@ rightSide = ''
 
 rucksacksData = open('./day03/input_day03.txt','r')
 rucksacksList = rucksacksData.read().splitlines()
-"""
+
 print('Number of Rucksacks: ', len(rucksacksList))
 
 for idx, ruckSack in enumerate(rucksacksList):
@@ -25,33 +25,18 @@ for idx, ruckSack in enumerate(rucksacksList):
             break
 
 print('Sum of Priorities: ', prioritySum)
-"""
-print(range(1,len(rucksacksList)))
 
-#while len(rucksacksList) != 0:
-for idx in range(1,len(rucksacksList)):
-    print('matching rucksack index : ', idx)
-    for item in rucksacksList[currentRuckSack]:
-        print(currentRuckSack, ' item: ',item)
-        if rucksacksList[idx].find(item) >=0 :
-            #rucksacksList.pop(currentRuckSack)
-            rucksacksList.pop(idx)
-            currentRuckSack = idx
-            matchedItem = item
-            foundMatch = True
-            print('found match in rucksack: ', idx)
+# PART 2 - GROUPS OF 3
+
+for idx in range(0,len(rucksacksList) - 2,3):
+    for item in rucksacksList[idx]:
+        if rucksacksList[idx +1].find(item) >= 0 and rucksacksList[idx + 2].find(item) >= 0:
+            print('index: ',idx)
+            print('item matched: ',item)
+            groupPrioritySum += '0abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.find(item)
             break
-    if foundMatch == True:
-        print('BREAK')
-        break
 
-for idx in range(currentRuckSack,len(rucksacksList)):
-    print('matching rucksack index : ', idx)
-    if rucksacksList[idx].find(matchedItem) >= 0:
-        print('found match in rucksack: ', idx)
-        rucksacksList.pop(idx)
-        break
+print('elf group priority sum: ',groupPrioritySum)
 
-print(len(rucksacksList))
 
 
