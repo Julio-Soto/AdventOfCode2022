@@ -34,7 +34,8 @@ for idx in range(1,len(rucksacksList)):
     for item in rucksacksList[currentRuckSack]:
         print(currentRuckSack, ' item: ',item)
         if rucksacksList[idx].find(item) >=0 :
-            rucksacksList.pop(currentRuckSack)
+            #rucksacksList.pop(currentRuckSack)
+            rucksacksList.pop(idx)
             currentRuckSack = idx
             matchedItem = item
             foundMatch = True
@@ -44,11 +45,13 @@ for idx in range(1,len(rucksacksList)):
         print('BREAK')
         break
 
-
-'''
-for idx, ruckSack in enumerate(rucksacksList):
-    for item in ruckSack:
-        if rucksacksList[idx + 1].find(item) >= 0:
-            rucksacksList.pop(idx)
+for idx in range(currentRuckSack,len(rucksacksList)):
+    print('matching rucksack index : ', idx)
+    if rucksacksList[idx].find(matchedItem) >= 0:
+        print('found match in rucksack: ', idx)
+        rucksacksList.pop(idx)
         break
-'''
+
+print(len(rucksacksList))
+
+
