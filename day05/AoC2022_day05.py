@@ -11,7 +11,9 @@ movesLines = []
 stacks = [[]]
 moves = []
 movingItem = ''
+movingGroup = []
 solution = ''
+groupSolution = ''
 
 inputLines = open('./day05/input_day05.txt','r').read().splitlines() # a list of strings
 
@@ -44,9 +46,15 @@ def stackPrint():
 # MOVES A NUMBER OF ITEMS FROM ONE STACK TO OTHER.
 def moveItems(number,fromStack,toStack):
     for k in range(number):
-        movingItem = stacks[fromStack][len(stacks[fromStack])-1]
+        movingItem = stacks[fromStack].pop()
         stacks[toStack].append(movingItem)
-        stacks[fromStack].pop()
+
+# MOVES A NUMBER OF ITEMS FROM ONE STACK TO ANOTHER AS A GROUP
+def moveItemsGrouped(number,fromStack,toStack):
+    for k in range(number):
+        movingGroup.append(stacks[fromStack].pop())
+    for n in range(number):
+        stacks[toStack].append(movingGroup.pop())
 
 # ACCESS A SINGLE ITEM BY STACK NUMBER AND ITEM INDEX.
 #print(stacks[4][5])
@@ -55,7 +63,8 @@ print('Initial State:')
 stackPrint()
 
 for move in moves:
-    moveItems(int(move[0]),int(move[1]),int(move[2]))
+    #moveItems(int(move[0]),int(move[1]),int(move[2]))  # this will provide the solution to PART 1.
+    moveItemsGrouped(int(move[0]),int(move[1]),int(move[2]))   # this will provide the solution for PART 2.
 
 print('Final State:')
 stackPrint()
